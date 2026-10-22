@@ -1,0 +1,37 @@
+services:
+  php:
+    depends_on:
+      - mysql
+    build: .
+    ports:
+      - ${APACHE_PORT}:${APACHE_PORT}
+    volumes:
+      - .:/var/www/html
+    networks:
+      - rede
+    restart: always
+    tty: true  
+  mysql:
+    image: mysql:latest
+    ports:
+      - ${MYSQL_PORT}:${MYSQL_PORT}
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./src/scripts/init.sql:/docker-entrypoint-initdb.d/1.sql
+    environment: 
+      MYSQL_ROOT_PASSWORD: yes
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USERNAME}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    networks:
+      - rede
+    restart: always
+
+volumes:
+  web-data:
+  db-data:
+    driver: local
+
+networks:
+  rede:
+    driver: bridge
