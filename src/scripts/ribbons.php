@@ -1,19 +1,24 @@
 <?php
-function head($locale)
+function head()
 {
-$locale=basename($locale, ".php");
 
-/*echo <<<HEADER
-this was called by the file $locale
-HEADER;*/
+echo <<<HEADER
+    <header>
+        <a href="search.php">listagems</a>
+        <a href="user.php">usuário</a>
+        <a href="msgs.php">mensagems</a>
+    </header>
+HEADER;
 }
 
 function foot()
 {
-    /*
+    
 echo <<<FOOTER
-this is the footer of the file
+    <footer>
+        <p>Gabriel Uczak Dawa 4I — trabalho final de linguagem de programação II - <a href="about.php">sobre o projeto</a></p>
+    </footer>
 FOOTER;
-*/
+
 }
 ?>
