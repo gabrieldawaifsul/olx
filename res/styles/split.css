@@ -1,0 +1,84 @@
+@import url(style.css);
+
+body{
+    flex-direction:row;
+}
+
+section{
+    display:flex;
+    height: 100vh;
+    width: 50vw;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.5em;
+}
+
+p, h1, h2, h3{
+    max-width: 50%;
+}
+
+#left{
+    align-items: end;
+}
+#left h1,  #left h3{
+    text-align: end;
+}
+#left span{
+    color: var(--redd);
+    text-shadow: 0.06em 0.06em 0.05em whitesmoke;
+}
+
+#right{
+    background-color: var(--back);
+    align-items: start;
+}
+#right div{
+    width: 50%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+#right div h2{
+    text-align: start;
+}
+#right div h2:hover{
+    color: var(--redd);
+}
+
+#right section{
+    max-width: 75%;
+    justify-content: center;
+    align-items: start;
+}
+
+#pickerSect button{
+    margin-top: 0.5em;
+    padding: 0.5em;
+    border: none;
+    background-color: var(--geen);
+    color: whitesmoke;
+    text-shadow: 0.08em 0.08em 0.05em black;
+    font-size:x-large;
+    box-shadow: 0.08em 0.08em 0.1em black;
+}
+
+input{
+    border: none;
+    margin: 0.5em 0; 
+    background-color: var(--geen);
+    box-shadow: 0.08em 0.08em 0.1em black;
+}
+
+form{
+    display: flex;
+    flex-flow: column;
+}
+
+.xtoy{
+    background-color: inherit;
+    border: none;
+    color: whitesmoke;
+    text-shadow: 0.08em 0.08em 0.05em black;
+    text-decoration: underline;
+}
