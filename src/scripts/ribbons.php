@@ -2,6 +2,12 @@
 function head()
 {
 
+/*conditional. if not logged in show 
+<header>
+        <a href="../../index.php">de volta ao início</a>
+    </header>
+*/
+
 echo <<<HEADER
     <header>
         <a href="search.php">listagems</a>

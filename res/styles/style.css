@@ -24,6 +24,10 @@ a{
     color: inherit;
 }
 
+a:hover, button:hover, input[type=button]:hover, input[type=submit]:hover{
+    color: var(--redd);
+}
+
 body{
     display: flex;
     align-items: center;

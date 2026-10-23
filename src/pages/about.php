@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sobre nós</title>
-    <link rel="stylesheet" href="res/styles/style.css">
+    <link rel="stylesheet" href="../../res/styles/style.css">
 </head>
 <body style="flex-direction: column; font-size: large;">
 <?php head();?>

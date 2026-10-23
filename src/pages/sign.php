@@ -34,6 +34,6 @@
         </section>
     </section>
 
-    <script src="src/scripts/sign.js" async></script>
+    <script src="../scripts/sign.js" async></script>
 </body>
 </html>
