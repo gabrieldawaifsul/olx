@@ -5,7 +5,6 @@
 | .env - variáveis globais pro projeto  
 | docker-compose.yaml - configuração base dos containers em um escopo geral  
 | Dockerfile - configuração mais específica dos containers  
-| index.php - página de landing  
 | readme.md - explicação das coisas
 
 ## Estrutura do Banco de Dados

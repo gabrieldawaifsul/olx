@@ -1,0 +1,33 @@
+@import url(reset.css);
+
+:root{
+    --geen: #45a45a;
+    --back: #2d2d2d;
+    --dark: #202020;
+    --redd: #f22;
+}
+
+@font-face {
+    font-family: 'Mononoki';
+    src: url('../fonts/MononokiNerdFont_Regular.ttf');
+}
+
+p, h1, h2, h3{
+    font-family: 'Mononoki';
+    color:whitesmoke;
+    text-shadow: 0.08em 0.08em 0.05em black;
+    overflow-wrap: break-word;
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #45a45a;
+    height: 100vh;
+}
