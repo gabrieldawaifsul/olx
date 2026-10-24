@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>criar ou entrar em uma conta</title>
+    <title>sign</title>
     <link rel="stylesheet" href="../../res/styles/split.css">
 </head>
 <body>
