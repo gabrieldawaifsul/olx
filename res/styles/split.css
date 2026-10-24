@@ -25,7 +25,7 @@ p, h1, h2, h3{
 }
 #left span{
     color: var(--redd);
-    text-shadow: 0.06em 0.06em 0.05em whitesmoke;
+    text-shadow: 0.06em 0.06em whitesmoke;
 }
 
 #right{
@@ -58,15 +58,17 @@ p, h1, h2, h3{
     border: none;
     background-color: var(--geen);
     color: whitesmoke;
-    text-shadow: 0.08em 0.08em 0.05em black;
+    text-shadow: 0.08em 0.08em black;
     font-size:x-large;
-    box-shadow: 0.08em 0.08em 0.1em black;
+    box-shadow: 0.08em 0.08em black;
 }
 
 .xtoy{
     background-color: inherit;
     border: none;
+    box-shadow: none;
     color: whitesmoke;
-    text-shadow: 0.08em 0.08em 0.05em black;
+    text-shadow: 0.08em 0.08em black;
     text-decoration: underline;
+    font-size:medium;
 }

@@ -11,7 +11,7 @@
 
 <?php head()?>
 
-    <div id="main">
+    <div id="main" class="box">
         <div style="flex-direction: row;">
             <img src="https://picsum.photos/id/40/200" alt="generic image">
             <div style="flex-direction:row">

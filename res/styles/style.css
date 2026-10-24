@@ -15,7 +15,7 @@
 p, h1, h2, h3{
     font-family: 'Mononoki';
     color:whitesmoke;
-    text-shadow: 0.08em 0.08em 0.05em black;
+    text-shadow: 0.08em 0.08em black;
     overflow-wrap: break-word;
 }
 
@@ -65,13 +65,16 @@ header{
     justify-content: space-evenly;
 }
 
-input{
+input, select{
     border: none;
     margin: 0.5em 0; 
     background-color: var(--geen);
-    box-shadow: 0.08em 0.08em 0.1em black;
+    box-shadow: 0.08em 0.08em black;
 }
 
+input[type=number] {
+  appearance: textfield;
+}
 
 form{
     display: flex;
@@ -84,7 +87,13 @@ button{
     border: none;
     background-color: var(--geen);
     color: whitesmoke;
-    text-shadow: 0.08em 0.08em 0.05em black;
+    text-shadow: 0.08em 0.08em black;
     font-size:x-large;
-    box-shadow: 5px 5px 10px 5px black;
+    box-shadow: 5px 5px black;
+}
+
+.box{
+    border: solid whitesmoke 5px; 
+    padding: 1em; 
+    box-shadow: 5px 5px;
 }
