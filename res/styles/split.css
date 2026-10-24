@@ -63,19 +63,6 @@ p, h1, h2, h3{
     box-shadow: 0.08em 0.08em 0.1em black;
 }
 
-input{
-    border: none;
-    margin: 0.5em 0; 
-    background-color: var(--geen);
-    box-shadow: 0.08em 0.08em 0.1em black;
-}
-
-
-form{
-    display: flex;
-    flex-flow: column;
-}
-
 .xtoy{
     background-color: inherit;
     border: none;

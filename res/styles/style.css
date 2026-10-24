@@ -64,3 +64,27 @@ header{
     align-items: center;
     justify-content: space-evenly;
 }
+
+input{
+    border: none;
+    margin: 0.5em 0; 
+    background-color: var(--geen);
+    box-shadow: 0.08em 0.08em 0.1em black;
+}
+
+
+form{
+    display: flex;
+    flex-flow: column;
+}
+
+button{
+    margin-top: 0.5em;
+    padding: 0.5em;
+    border: none;
+    background-color: var(--geen);
+    color: whitesmoke;
+    text-shadow: 0.08em 0.08em 0.05em black;
+    font-size:x-large;
+    box-shadow: 5px 5px 10px 5px black;
+}

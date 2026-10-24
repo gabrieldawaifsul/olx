@@ -1,0 +1,32 @@
+@import url(style.css);
+
+#main{
+    width: 50vw;
+    height: 30vh;
+    background-color: var(--geen);
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 5px 5px 10px 5px black;
+}
+
+div{
+    display: flex;
+    padding: 0.2em;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.sendTo{
+    font-size: normal;
+    margin:0;
+    padding:0;
+    box-shadow: none;
+    background-color: inherit;
+    border: none;
+    color: whitesmoke;
+    text-shadow: 0.08em 0.08em 0.05em black;
+    text-decoration: underline;
+    display: flex;
+    align-content: start;
+}
