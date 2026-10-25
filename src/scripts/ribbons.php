@@ -10,7 +10,7 @@ function head()
 
 echo <<<HEADER
     <header>
-        <a href="search.php">listagems</a>
+        <a href="search.php">listagens</a>
         <a href="user.php">usuário</a>
         <a href="msgs.php">mensagems</a>
     </header>

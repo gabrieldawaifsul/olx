@@ -24,8 +24,15 @@ a{
     color: inherit;
 }
 
-a:hover, button:hover, input[type=button]:hover, input[type=submit]:hover{
-    color: var(--redd);
+a:hover{
+    color: var(--redd) !important;
+    text-shadow: none !important;
+}
+
+button:hover, input[type=button]:hover, input[type=submit]:hover{
+    background-color: var(--redd) !important;
+    color: whitesmoke !important;
+    text-shadow: none !important;
 }
 
 body{

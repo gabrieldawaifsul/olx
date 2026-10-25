@@ -22,7 +22,7 @@
             <option value="roupa">roupa</option>
             <option value="outro">outro</option>
         </select>
-        <input type="submit">
+        <input type="submit" value="nova listagem">
     </form>
     </div>
 <?php foot();?>

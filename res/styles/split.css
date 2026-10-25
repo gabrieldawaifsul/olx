@@ -17,6 +17,11 @@ p, h1, h2, h3{
     max-width: 50%;
 }
 
+a:hover{
+    color: var(--redd) !important;
+    text-shadow: none !important;
+}
+
 #left{
     align-items: end;
 }
@@ -43,7 +48,7 @@ p, h1, h2, h3{
     text-align: start;
 }
 #right div h2:hover{
-    color: var(--redd);
+    text-shadow: none !important;
 }
 
 #right section{
@@ -63,6 +68,11 @@ p, h1, h2, h3{
     box-shadow: 0.08em 0.08em black;
 }
 
+#pickerSect button:hover{
+    color:whitesmoke;
+    background-color: var(--redd) !important;
+    text-shadow: none !important;
+}
 .xtoy{
     background-color: inherit;
     border: none;
@@ -71,4 +81,10 @@ p, h1, h2, h3{
     text-shadow: 0.08em 0.08em black;
     text-decoration: underline;
     font-size:medium;
+}
+
+input[type=submit]:hover{
+    background-color: var(--redd) !important;
+    color: whitesmoke !important;
+    text-shadow: none !important;
 }

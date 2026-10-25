@@ -40,10 +40,39 @@ echo <<<ITEM
         </div>
         
 </div>
+
+<br>
 ITEM;
 
+$auth = true;
+
+if($auth){
+echo <<<OWNER
+
+OWNER;
+}
+
+mysqli_close($db);
 foot();
 ?>
 
+<div id="admin" class="box">
+    <button onclick="edit()">editar</button>
+    <button onclick="delt()">deletar</button>
+</div>
+
+    <script>
+        function edit(){
+            <?php
+                echo "edit";
+            ?>
+        }
+
+        function delt(){
+            <?php
+                echo "delete";
+            ?>
+        }
+    </script>
 </body>
 </html>

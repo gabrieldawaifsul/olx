@@ -10,6 +10,25 @@
     box-shadow: 5px 5px black;
 }
 
+#admin{
+    margin-top: 10px;
+    width:50vw;
+    border-color: var(--redd);
+    background-color: brown;
+}
+
+#admin button{
+    background-color: var(--redd);
+    color: whitesmoke;
+    width: 45%;
+}
+
+#admin button:hover{
+    background-color: whitesmoke;
+    color: black;
+    text-shadow: none;
+}
+
 div{
     display: flex;
     padding: 0.2em;
@@ -34,4 +53,9 @@ p{
     text-decoration: underline;
     display: flex;
     align-content: start;
+}
+
+body{
+    display: flex;
+    flex-flow: column;
 }
