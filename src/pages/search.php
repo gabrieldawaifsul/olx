@@ -8,7 +8,24 @@
     <link rel="stylesheet" href="../../res/styles/search.css">
 </head>
 <body>
-<?php head();?>
+<?php head();
+
+$allItems = [];
+
+include("../scripts/conn.php");
+
+$defaultQuery = "SELECT * FROM items;";
+$defaultResult = mysqli_query($db, $defaultQuery);
+
+if(mysqli_num_rows($defaultResult) > 0){
+    while($card = mysqli_fetch_assoc($defaultResult)){
+        $allItems[] = '{"tit": "' . $card["titulo"] . '","cat":"' . $card["cat"] . '", "pre": ' . $card["preco"] . ', "qtd": ' . $card["qtd"] . ', "href": "' . $card["id"] . '"}';
+    };
+
+}
+
+mysqli_close($db);
+?>
 
     <section class="box">
 
@@ -19,27 +36,7 @@
 
         <div id="carouselbox">
             <?php
-            $allItems = array(
-                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
-                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
-                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
-                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
-                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
-                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
-                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
-                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
-                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
-                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
-                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
-                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
-                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
-                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
-                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
-                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
-                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
-                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
-                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}'
-            );
+            
             $tit = null;
             $cat = null;
             $pre = null;
@@ -58,7 +55,7 @@
                 echo <<<CARD
                     <div class="card">
                         <div>
-                        <a href="item/?item=$href">
+                        <a href="item.php?$href">
                             <h2>$tit</h2>
                         </a>
                             <h3>$cat</h3>

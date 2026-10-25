@@ -11,20 +11,16 @@
 
 <?php head();
 
-$item = json_decode('{
-            "id": 0,
-            "uname": "aluno",
-            "titulo": "listagem",
-            "descr": "lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum", 
-            "preco": 100, 
-            "qtd": 0
-          }');
+include("../scripts/conn.php");
 
-$titulo = $item->{'titulo'};
-$uname = $item->{'uname'};
-$descr = $item->{'descr'};
-$preco = $item->{'preco'};
-$qtd = $item->{'qtd'};
+$itemQuery = "SELECT * FROM items WHERE id = ".$_SERVER["QUERY_STRING"].";";
+$itemResult = mysqli_fetch_assoc(mysqli_query($db, $itemQuery));
+
+$titulo = $itemResult["titulo"];
+$uname = $itemResult["uid"];
+$descr = $itemResult["descr"];
+$preco = $itemResult["preco"];
+$qtd = $itemResult["qtd"];
 
 echo <<<ITEM
 <div id="main" class="box">

@@ -1,6 +1,6 @@
 # Estrutura do Projeto
 ## Estrutura de Arquivos
-|-- res - recursos estaticos pro website. fontes, imagens, stylesheets  
+|-- res - recursos estaticos pro website. fontes, stylesheets  
 |-- src - codigo executavel, as paginas, os scripts  
 | .env - variáveis globais pro projeto  
 | docker-compose.yaml - configuração base dos containers em um escopo geral  
