@@ -1,3 +1,4 @@
+<?php require '../scripts/ribbons.php';?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,20 +8,37 @@
     <link rel="stylesheet" href="../../res/styles/search.css">
 </head>
 <body>
+<?php head();?>
+
     <section class="box">
+
             <form id="searchbox" action="search.php" method="get">
                 <input required type="search" name="search" placeholder="pesquisar listagem...">
                 <input type="submit" value="pesquisar">
             </form>
-        </div>
+
         <div id="carouselbox">
             <?php
             $allItems = array(
-                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0}',
-                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0}',
-                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0}',
-                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0}',
-                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0}'
+                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
+                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
+                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
+                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
+                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
+                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
+                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
+                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
+                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
+                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
+                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
+                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
+                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
+                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
+                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
+                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
+                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
+                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}',
+                    '{"tit": "null","cat":"null", "pre": 0.0, "qtd": 0, "href": "woah"}'
             );
             $tit = null;
             $cat = null;
@@ -35,11 +53,14 @@
                 $cat = $json->{'cat'};
                 $pre = $json->{'pre'};
                 $qtd = $json->{'qtd'};
+                $href = $json->{'href'};
                 
-                echo <<<HEREDOC
+                echo <<<CARD
                     <div class="card">
                         <div>
+                        <a href="item/?item=$href">
                             <h2>$tit</h2>
+                        </a>
                             <h3>$cat</h3>
                         </div>
                         <div>
@@ -47,12 +68,16 @@
                             <h3>restam $qtd</h3>
                         </div>
                     </div>
-                HEREDOC;
+                CARD;
             }
-
             ?>
 
         </div>
+        <br>
+    <a href="sell.php">deseja criar uma nova listagem?</a>
     </section>
+
+
+<?php foot();?>
 </body>
 </html>
