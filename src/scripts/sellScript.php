@@ -1,6 +1,8 @@
 <?php
-require 'conn.php';
+header ("Location:../pages/search.php");
 
+require 'conn.php';
+# pega as variáveis
 $tit = $_POST["tit"];
 $prc = $_POST["prc"];
 $qtd = $_POST["qtd"];
@@ -8,10 +10,12 @@ $dsc = $_POST["dsc"];
 $cat = $_POST["cat"];
 $user = 1;
 
+# monta a query
 $query = "INSERT INTO items(uid, preco, qtd, titulo, descr)
           VALUES($user,$prc,$qtd,'$tit','$dsc');";
 
 try{
+    # tenta query
     mysqli_query($db, $query);
     echo 'Sucesso <br>';
 }catch(mysqli_sql_exception){

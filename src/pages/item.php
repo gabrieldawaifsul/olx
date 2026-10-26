@@ -13,6 +13,7 @@
 
 include("../scripts/conn.php");
 
+# valores query -extracão> variáveis 
 $itemQuery = "SELECT * FROM items WHERE id = ".$_SERVER["QUERY_STRING"].";";
 $itemResult = mysqli_fetch_assoc(mysqli_query($db, $itemQuery));
 
@@ -22,6 +23,7 @@ $descr = $itemResult["descr"];
 $preco = $itemResult["preco"];
 $qtd = $itemResult["qtd"];
 
+# expressão dos valores no html
 echo <<<ITEM
 <div id="main" class="box">
         <div style="flex-direction: row;">
@@ -44,6 +46,8 @@ echo <<<ITEM
 <br>
 ITEM;
 
+# área de gerenciamento do item - WIP
+# só descobrir como fazer botão.onclick() -> php func
 $auth = true;
 
 if($auth){
@@ -52,8 +56,6 @@ echo <<<OWNER
 OWNER;
 }
 
-mysqli_close($db);
-foot();
 ?>
 
 <div id="admin" class="box">
@@ -74,5 +76,10 @@ foot();
             ?>
         }
     </script>
+
+<?php
+    mysqli_close($db);
+    foot();
+?>
 </body>
 </html>

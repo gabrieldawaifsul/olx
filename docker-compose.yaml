@@ -19,10 +19,8 @@ services:
       - db-data:/var/lib/mysql
       - ./src/scripts/init.sql:/docker-entrypoint-initdb.d/1.sql
     environment: 
-      MYSQL_ROOT_PASSWORD: yes
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USERNAME}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     networks:
       - rede
     restart: always
