@@ -26,7 +26,6 @@ services:
     restart: always
 
 volumes:
-  web-data:
   db-data:
     driver: local
 
