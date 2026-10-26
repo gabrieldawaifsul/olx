@@ -17,11 +17,13 @@ include("../scripts/conn.php");
 $itemQuery = "SELECT * FROM items WHERE id = ".$_SERVER["QUERY_STRING"].";";
 $itemResult = mysqli_fetch_assoc(mysqli_query($db, $itemQuery));
 
+$id = $itemResult["id"];
 $titulo = $itemResult["titulo"];
 $uname = $itemResult["uid"];
 $descr = $itemResult["descr"];
 $preco = $itemResult["preco"];
 $qtd = $itemResult["qtd"];
+
 
 # expressão dos valores no html
 echo <<<ITEM
@@ -59,23 +61,9 @@ OWNER;
 ?>
 
 <div id="admin" class="box">
-    <button onclick="edit()">editar</button>
-    <button onclick="delt()">deletar</button>
+    <button><a href="itemedit.php">editar</a></button>
+    <button><form action="delete.php" method="post"><input type="submit" value="id"></form></button>
 </div>
-
-    <script>
-        function edit(){
-            <?php
-                echo "edit";
-            ?>
-        }
-
-        function delt(){
-            <?php
-                echo "delete";
-            ?>
-        }
-    </script>
 
 <?php
     mysqli_close($db);
