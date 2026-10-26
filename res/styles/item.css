@@ -59,3 +59,12 @@ body{
     display: flex;
     flex-flow: column;
 }
+
+input[type=submit]{
+    background-color: inherit;
+    color: inherit;
+    box-shadow: inherit;
+    text-align: center;
+    text-shadow: 0.08em 0.08em black;
+    text-decoration: underline;
+}

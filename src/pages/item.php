@@ -54,18 +54,19 @@ $auth = true;
 
 if($auth){
 echo <<<OWNER
-
+<div id="admin" class="box">
+    <button><form action="../scripts/editItem.php" method="post">
+        <input style="display: none" type="text" name="id" value=$id>
+        <input type="submit" value="editar"></form>
+    </button>
+    <button><form action="../scripts/deleteItem.php" method="post">
+        <input style="display: none" type="text" name="id" value=$id>
+        <input type="submit" value="deletar"></form>
+    </button>
+</div>
 OWNER;
 }
 
-?>
-
-<div id="admin" class="box">
-    <button><a href="itemedit.php">editar</a></button>
-    <button><form action="delete.php" method="post"><input type="submit" value="id"></form></button>
-</div>
-
-<?php
     mysqli_close($db);
     foot();
 ?>
