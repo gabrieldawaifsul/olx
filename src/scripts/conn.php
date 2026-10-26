@@ -1,3 +1,3 @@
 <?php
-    $db = mysqli_connect('mysql', 'root', 'senhasegura', 'olx-db');
+    $db = mysqli_connect('mysql', 'root', 'yes', 'olx-db');
 ?>
