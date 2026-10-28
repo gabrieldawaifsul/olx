@@ -102,4 +102,12 @@ BEGIN
   WHERE u.id = id;
 END$$
 
+CREATE PROCEDURE delete_item(item INT)
+BEGIN
+    DELETE FROM carrinhos WHERE iid = item;
+    DELETE FROM item WHERE id = item;
+END$$
+
 DELIMITER ;
+
+EXEC delete_item @item = 1;

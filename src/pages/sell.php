@@ -11,11 +11,14 @@
 <?php head();?>
     <div class="box">
         <h1>criar uma <br> nova listagem</h1>
-    <form action="../scripts/sellScript.php" method="post">
-        <input required maxlength=64 type="text" name="tit" placeholder="nome da listagem">
-        <input required min=0 type="number" name="prc" placeholder="preco do item">
+    <form action="../scripts/itemCRUD.php" method="post">
+        <input style="display: none;" type="text" name="CRUD" value='C'>
+<!--AUTENTICAÇÂO DE USUÀRIO-->
+        <input style="display: none;" type="text" name="uid" value=1>
+        <input required maxlength=64 type="text" name="titulo" placeholder="nome da listagem">
+        <input required maxlength=1024 type="text" name="descr" placeholder="descreva a listagem">
+        <input required min=0 type="number" name="preco" placeholder="preco do item">
         <input required min=1 type="number" name="qtd" placeholder="quantos disponível">
-        <input required maxlength=1024 type="text" name="dsc" placeholder="descreva a listagem">
         <select required name="cat">
             <option value="" disabled selected hidden>qual o tipo da listagem</option>
             <option value="comida">comida</option>

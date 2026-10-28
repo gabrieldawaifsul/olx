@@ -2,9 +2,11 @@
 #abre conexão
 require 'conn.php';
 
+
 #handler da tipagem do request e incialização das variáveis dependente disto
 if($_SERVER['REQUEST_METHOD'] == 'GET'){
-    $CRUD    = $_GET['CRUD'];
+                #se não tiver nada especificado, faz o R por padrão
+    $CRUD    = @$_GET['CRUD'] == null ? 'R' : $_GET['CRUD']; 
     @$id     = $_GET['id'];
     @$uid    = $_GET['uid'];
     @$preco  = $_GET['preco'];
@@ -13,7 +15,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
     @$descr  = $_GET['descr'];
     @$cat    = $_GET['cat'];
 }elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $CRUD    = $_POST['CRUD'];
+    @$CRUD    = $_POST['CRUD'];
     @$id     = $_POST['id'];
     @$uid    = $_POST['uid'];
     @$preco  = $_POST['preco'];
@@ -29,8 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 $queries = array('C' => "INSERT INTO items(uid, preco, qtd, titulo, descr, cat) 
                          VALUES('$uid', '$preco', '$qtd', '$titulo', '$descr', '$cat');",
 
-                 'R' => "SELECT * FROM items WHERE id = '$id';",
-                 'Ra'=> "SELECT * FROM items;",
+                 'R' => "SELECT * FROM items;",
 
                  'U' => "UPDATE items
                          SET uid = '$uid',
@@ -41,8 +42,7 @@ $queries = array('C' => "INSERT INTO items(uid, preco, qtd, titulo, descr, cat)
                              cat    = '$cat'
                          WHERE id = $id;",
 
-                 'D' => "DELETE FROM items 
-                         WHERE id = $id;"
+                 'D' => "DELETE FROM items WHERE id = $id;"
                 );
 
 #executa a query e prende o resultado na array $r
@@ -61,19 +61,14 @@ function user_fetch_assoc_to_array($fa){
     ); 
 }
 
-#chama a função acima para Read por ID 
-if($CRUD == 'R')
-    $result = user_fetch_assoc_to_array(mysqli_fetch_assoc($query_result_temp));
-
 #loop para chamar a função acima repetidamente
-if($CRUD == 'Ra')
+if($CRUD == 'R')
     while($row = mysqli_fetch_assoc($query_result_temp))
         $result[] = user_fetch_assoc_to_array($row);
 
-if($CRUD == ('R' or 'Ra'))
-    echo var_dump($result);
-
 #fecha a conexão
 mysqli_close($db);
+
+require 'redirect.html';
 
 ?>

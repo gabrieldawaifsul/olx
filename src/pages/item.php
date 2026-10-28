@@ -1,4 +1,3 @@
-<?php require '../scripts/ribbons.php'?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,23 +8,23 @@
 </head>
 <body>
 
-<?php head();
+<?php 
 
-include("../scripts/conn.php");
+#header
+require '../scripts/ribbons.php';
+head();
 
-# valores query -extracão> variáveis 
-$itemQuery = "SELECT * FROM items WHERE id = ".$_SERVER["QUERY_STRING"].";";
-$itemResult = mysqli_fetch_assoc(mysqli_query($db, $itemQuery));
+#pega o item no url e distribui as variáveis
+require '../scripts/itemCRUD.php';
+$id = $_SERVER["QUERY_STRING"];
+$item = $result[$id];
+$titulo = $item["titulo"];
+$uname  = $item["uid"];
+$descr  = $item["descr"];
+$preco  = $item["preco"];
+$qtd    = $item["qtd"];
 
-$id = $itemResult["id"];
-$titulo = $itemResult["titulo"];
-$uname = $itemResult["uid"];
-$descr = $itemResult["descr"];
-$preco = $itemResult["preco"];
-$qtd = $itemResult["qtd"];
 
-
-# expressão dos valores no html
 echo <<<ITEM
 <div id="main" class="box">
         <div style="flex-direction: row;">
@@ -36,7 +35,7 @@ echo <<<ITEM
                     <p>$descr</p>
                 </div>
                 <div style="flex-direction: column; align-items: end;">
-                    <h1>R$preco</h1>
+                    <h1>R\$$preco</h1>
                     <h3>$qtd disponível(is)</h3>
                     <button onclick="#">comprar</button>
                 </div>
@@ -48,26 +47,27 @@ echo <<<ITEM
 <br>
 ITEM;
 
+# AUTENTICAÇÂO DE USUÀRIO
 # área de gerenciamento do item - WIP
-# só descobrir como fazer botão.onclick() -> php func
 $auth = true;
 
 if($auth){
 echo <<<OWNER
 <div id="admin" class="box">
-    <button><form action="../scripts/editItem.php" method="post">
+    <button><form action="../scripts/itemCRUD.php" method="post">
         <input style="display: none" type="text" name="id" value=$id>
+        <input style="display: none" type="text" name="CRUD" value='U'>
         <input type="submit" value="editar"></form>
     </button>
-    <button><form action="../scripts/deleteItem.php" method="post">
+    <button><form action="../scripts/itemCRUD.php" method="post">
         <input style="display: none" type="text" name="id" value=$id>
+        <input style="display: none" type="text" name="CRUD" value='D'>
         <input type="submit" value="deletar"></form>
     </button>
 </div>
 OWNER;
 }
 
-    mysqli_close($db);
     foot();
 ?>
 </body>
