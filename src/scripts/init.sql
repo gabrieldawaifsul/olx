@@ -3,8 +3,7 @@ CREATE TABLE users(
     id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(64) NOT NULL UNIQUE,
     senha VARCHAR(64) NOT NULL,
-    nome VARCHAR(32) NOT NULL,
-    foto VARCHAR(32) DEFAULT "base.png"
+    nome VARCHAR(32) NOT NULL
 );
 
 CREATE TABLE items(
@@ -14,7 +13,6 @@ CREATE TABLE items(
     qtd INT DEFAULT 1,
     titulo VARCHAR(64) NOT NULL,
     descr VARCHAR(1024),
-    foto VARCHAR(32) DEFAULT "base.png",
     cat VARCHAR(16) CHECK (cat IN ('comida','roupa','outro')) DEFAULT 'outro'
 );
 
