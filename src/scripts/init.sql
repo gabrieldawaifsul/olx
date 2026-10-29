@@ -1,4 +1,5 @@
--- DDL. Criação do banco
+-- DDL
+-- Criação do banco
 CREATE TABLE users(
     id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(64) NOT NULL UNIQUE,
@@ -13,7 +14,8 @@ CREATE TABLE items(
     qtd INT DEFAULT 1,
     titulo VARCHAR(64) NOT NULL,
     descr VARCHAR(1024),
-    cat VARCHAR(16) CHECK (cat IN ('comida','roupa','outro')) DEFAULT 'outro'
+    cat VARCHAR(16) CHECK (cat IN ('comida','roupa','outro')) DEFAULT 'outro',
+    FULLTEXT idx (titulo, descr, cat)
 );
 
 CREATE TABLE carrinhos(
@@ -59,9 +61,7 @@ INSERT INTO mensagens VALUES
 
 -- DQL
 -- PROCEDIMENTOS. Queries em SQL que eu pretendo utilizar frequentemente no código. 
-DELIMITER $$
-CREATE PROCEDURE minhas_mensagens(id INT)
-BEGIN
+/*
     SELECT sender 
     FROM mensagens
     WHERE getter = id
@@ -69,10 +69,7 @@ BEGIN
     SELECT getter 
     FROM mensagens
     WHERE sender = id;
-END$$
 
-CREATE PROCEDURE minhas_mensagens_com(id1 INT, id2 INT)
-BEGIN
     SELECT sender, texto
     FROM mensagens
     WHERE sender = id1 AND getter = id2
@@ -80,10 +77,7 @@ BEGIN
     SELECT sender, texto
     FROM mensagens
     WHERE sender = id2 AND getter = id2;
-END$$
 
-CREATE PROCEDURE meu_carrinho(id INT)
-BEGIN
   SELECT i.* 
   FROM items AS i
   JOIN carrinhos AS c 
@@ -91,23 +85,17 @@ BEGIN
   JOIN users AS u 
   on c.uid = u.id
   WHERE u.id = id;
-END$$
 
-CREATE PROCEDURE meus_items(id INT)
-BEGIN
+
   SELECT i.* 
   FROM items AS i
   JOIN users AS u 
   on i.uid = u.id
   WHERE u.id = id;
-END$$
 
-CREATE PROCEDURE delete_item(item INT)
-BEGIN
+
+
     DELETE FROM carrinhos WHERE iid = item;
     DELETE FROM item WHERE id = item;
-END$$
-
-DELIMITER ;
-
-EXEC delete_item @item = 1;
+*/
+-- VIEWS. pseudotabelas em prol de facilitar acesso de dados

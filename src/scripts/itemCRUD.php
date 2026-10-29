@@ -1,7 +1,9 @@
 <?php
-#abre conexão
-require 'conn.php';
 
+#itemCRUD é a página que formulários usam
+
+#abre conexão e importa queries
+require 'itemQuery.php';
 
 #handler da tipagem do request e incialização das variáveis dependente disto
 if($_SERVER['REQUEST_METHOD'] == 'GET'){
@@ -15,7 +17,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
     @$descr  = $_GET['descr'];
     @$cat    = $_GET['cat'];
 }elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
-    @$CRUD    = $_POST['CRUD'];
+    @$CRUD   = $_POST['CRUD'];
     @$id     = $_POST['id'];
     @$uid    = $_POST['uid'];
     @$preco  = $_POST['preco'];
@@ -27,48 +29,27 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
     echo "Tipo de request incorreto?";
 }
 
-#array associativa guardando as queries
-$queries = array('C' => "INSERT INTO items(uid, preco, qtd, titulo, descr, cat) 
-                         VALUES('$uid', '$preco', '$qtd', '$titulo', '$descr', '$cat');",
+$CRUD_Q = array(  
+                    'C' => "INSERT INTO items(uid, preco, qtd, titulo, descr, cat) 
+                            VALUES('$uid', '$preco', '$qtd', '$titulo', '$descr', '$cat');",
 
-                 'R' => "SELECT * FROM items;",
+                    'R' => "SELECT * FROM items;",
 
-                 'U' => "UPDATE items
-                         SET uid = '$uid',
-                             preco  = '$preco',
-                             qtd    = '$qtd',
-                             titulo = '$titulo',
-                             descr  = '$descr',
-                             cat    = '$cat'
-                         WHERE id = $id;",
+                    'U' => "UPDATE items SET uid = '$uid', preco = '$preco', qtd = '$qtd', titulo = '$titulo', descr  = '$descr', cat = '$cat' WHERE id = $id;",
 
-                 'D' => "DELETE FROM items WHERE id = $id;"
+                    'D' => "DELETE FROM items WHERE id = $id;"
                 );
 
+if($CRUD == 'D')
+    mysqli_query($db, "DELETE FROM carrinhos WHERE iid = $id;");
+
 #executa a query e prende o resultado na array $r
-$query_result_temp = mysqli_query($db, $queries[$CRUD]);
+$result_temp = mysqli_query($db, $CRUD_Q[$CRUD]);
 
-#processa a query -> array
-function user_fetch_assoc_to_array($fa){
-    return array(
-        'id'     => $fa["id"],
-        'uid'    => $fa["uid"],
-        'preco'  => $fa["preco"],
-        'qtd'    => $fa["qtd"],
-        'titulo' => $fa["titulo"],
-        'descr'  => $fa["descr"],
-        'cat'    => $fa["cat"]
-    ); 
-}
-
-#loop para chamar a função acima repetidamente
+#loop para transformar cara row em uma array e por todas essas arrays em uma matriz
 if($CRUD == 'R')
-    while($row = mysqli_fetch_assoc($query_result_temp))
-        $result[] = user_fetch_assoc_to_array($row);
+    $result = query_result_getter($result_temp);
 
-#fecha a conexão
-mysqli_close($db);
-
-require 'redirect.html';
+require 'redirect.php';
 
 ?>

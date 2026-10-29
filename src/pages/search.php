@@ -10,24 +10,8 @@
 <body>
 <?php head();
 
-# cria array
-$allItems = [];
+include("../scripts/itemCRUD.php");
 
-include("../scripts/conn.php");
-
-# faz a query e guarda em default result
-$defaultQuery = "SELECT * FROM items;";
-$defaultResult = mysqli_query($db, $defaultQuery);
-
-# salva o resultado da query em um json literal chamado $allItems
-if(mysqli_num_rows($defaultResult) > 0){
-    while($card = mysqli_fetch_assoc($defaultResult)){
-        $allItems[] = '{"tit": "' . $card["titulo"] . '","cat":"' . $card["cat"] . '", "pre": ' . $card["preco"] . ', "qtd": ' . $card["qtd"] . ', "href": "' . $card["id"] . '"}';
-    };
-
-}
-
-mysqli_close($db);
 ?>
 
     <section class="box">
@@ -47,7 +31,7 @@ mysqli_close($db);
             $qtd = null;
 
             # lê a array $allItems
-            foreach($allItems as $item){
+            foreach($result as $item){
                 
                 $json = json_decode($item);
                 # extrai os valores em variáveis 
