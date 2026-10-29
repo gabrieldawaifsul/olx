@@ -12,10 +12,17 @@
 
 include("../scripts/itemCRUD.php");
 
+if(isset($_GET["search"])){
+    $result = query_result_getter(
+        mysqli_query($db,
+            "SELECT * FROM items WHERE MATCH(titulo, descr, cat) AGAINST ('*{$_GET["search"]}*' IN BOOLEAN MODE);"
+        ),'items'
+    ); 
+}
+
+
 ?>
-
     <section class="box">
-
             <form id="searchbox" action="search.php" method="get">
                 <input required type="search" name="search" placeholder="pesquisar listagem...">
                 <input type="submit" value="pesquisar">
@@ -25,34 +32,20 @@ include("../scripts/itemCRUD.php");
         <div id="carouselbox">
             <?php
             
-            $tit = null;
-            $cat = null;
-            $pre = null;
-            $qtd = null;
-
             # lê a array $allItems
-            foreach($result as $item){
-                
-                $json = json_decode($item);
-                # extrai os valores em variáveis 
-                $tit = $json->{'tit'};
-                $cat = $json->{'cat'};
-                $pre = $json->{'pre'};
-                $qtd = $json->{'qtd'};
-                $href = $json->{'href'};
-                
+            foreach($result as $item){   
                 # cria um div card com os valores dentro
                 echo <<<CARD
                     <div class="card">
                         <div>
-                        <a href="item.php?$href">
-                            <h2>$tit</h2>
+                        <a href="item.php?{$item['id']}">
+                            <h2>{$item['titulo']}</h2>
                         </a>
-                            <h3>$cat</h3>
+                            <h3>{$item['cat']}</h3>
                         </div>
                         <div>
-                            <h2>R\$$pre</h2>
-                            <h3>restam $qtd</h3>
+                            <h2>R\${$item['preco']}</h2>
+                            <h3>restam {$item['qtd']}</h3>
                         </div>
                     </div>
                 CARD;

@@ -45,10 +45,10 @@ function fata($fa, $t){
 }
 
 #resultado de query -> matriz
-function query_result_getter($rq){
+function query_result_getter($rq, $t){
     $result = null;
     while($row = mysqli_fetch_assoc($rq))
-        $result[] = fata($row);
+        $result[] = fata($row, $t);
     return $result;
 }
 

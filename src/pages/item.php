@@ -104,8 +104,6 @@ if (isset($_POST["mode"]) && $_POST["mode"] == 'edit'){
     }
 }
 
-
-
     foot();
 ?>
 </body>

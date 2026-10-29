@@ -3,7 +3,7 @@
 #itemCRUD é a página que formulários usam
 
 #abre conexão e importa queries
-require 'itemQuery.php';
+require 'conn.php';
 
 #handler da tipagem do request e incialização das variáveis dependente disto
 if($_SERVER['REQUEST_METHOD'] == 'GET'){
@@ -48,7 +48,7 @@ $result_temp = mysqli_query($db, $CRUD_Q[$CRUD]);
 
 #loop para transformar cara row em uma array e por todas essas arrays em uma matriz
 if($CRUD == 'R')
-    $result = query_result_getter($result_temp);
+    $result = query_result_getter($result_temp,'items');
 
 require 'redirect.php';
 
