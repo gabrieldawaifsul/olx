@@ -1,4 +1,10 @@
-<?php require '../scripts/ribbons.php';?>
+<?php 
+@session_start();
+    if(is_null(@$_SESSION['id']))
+        header("Location: search.php");
+
+require '../scripts/ribbons.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,13 +14,13 @@
     <link rel="stylesheet" href="../../res/styles/style.css">
 </head>
 <body>
-<?php head();?>
+<?php head();
+echo <<<WOAG
     <div class="box">
         <h1>criar uma <br> nova listagem</h1>
     <form action="../scripts/itemCRUD.php" method="post">
         <input style="display: none;" type="text" name="CRUD" value='C'>
-<!--AUTENTICAÇÂO DE USUÀRIO-->
-        <input style="display: none;" type="text" name="uid" value=1>
+        <input style="display: none;" type="text" name="uid" value={$_SESSION['id']}>
         <input required maxlength=64 type="text" name="titulo" placeholder="nome da listagem">
         <input required maxlength=1024 type="text" name="descr" placeholder="descreva a listagem">
         <input required min=0 type="number" name="preco" placeholder="preco do item">
@@ -28,6 +34,9 @@
         <input type="submit" value="nova listagem">
     </form>
     </div>
+WOAG;
+?>
+
 <?php foot();?>
 </body>
 </html>

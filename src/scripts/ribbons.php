@@ -1,20 +1,25 @@
 <?php
+@session_start();
+
 function head()
 {
-
-/*conditional. if not logged in show 
-<header>
-        <a href="../../index.php">de volta ao início</a>
+if(is_null(@$_SESSION['id'])){
+echo <<<HEADER
+    <header>
+        <a href="search.php">listagens</a>
+        <a href="sign.php">login/signup</a>
     </header>
-*/
-
+HEADER;
+}else{
 echo <<<HEADER
     <header>
         <a href="search.php">listagens</a>
         <a href="user.php">usuário</a>
         <a href="msgs.php">mensagems</a>
+        <a href="../scripts/exit.php">logout</a>
     </header>
 HEADER;
+}
 }
 
 function foot()

@@ -1,13 +1,13 @@
 -- DDL
 -- Criação do banco
-CREATE TABLE users(
+CREATE TABLE IF NOT EXISTS users(
     id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(64) NOT NULL UNIQUE,
     senha VARCHAR(64) NOT NULL,
     nome VARCHAR(32) NOT NULL
 );
 
-CREATE TABLE items(
+CREATE TABLE IF NOT EXISTS items(
     id INT AUTO_INCREMENT PRIMARY KEY,
     uid INT NOT NULL, FOREIGN KEY (uid) REFERENCES users(id),
     preco DOUBLE NOT NULL,
@@ -18,12 +18,12 @@ CREATE TABLE items(
     FULLTEXT idx (titulo, descr, cat)
 );
 
-CREATE TABLE carrinhos(
+CREATE TABLE IF NOT EXISTS carrinhos(
     uid INT NOT NULL, FOREIGN KEY (uid) REFERENCES users(id),
     iid INT NOT NULL, FOREIGN KEY (iid) REFERENCES items(id)
 );
 
-CREATE TABLE mensagens(
+CREATE TABLE IF NOT EXISTS mensagens(
     sender INT NOT NULL, FOREIGN KEY (sender) REFERENCES users(id),
     getter INT NOT NULL, FOREIGN KEY (getter) REFERENCES users(id),
     texto VARCHAR(256) NOT NULL

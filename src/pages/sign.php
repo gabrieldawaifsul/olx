@@ -1,3 +1,9 @@
+<?php
+@session_start();
+    if(!is_null(@$_SESSION['id']))
+        header("Location: search.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,18 +23,20 @@
         </section>
         <section id="loginSect">
             <form action="../scripts/auth.php" method="post">
-                <input type="text" name="loginMail" id="loginMail" placeholder="insira seu email" required>
-                <input type="password" name="loginPass" id="loginPass" placeholder="insira sua senha" required>
+                <input type="text" name="sign" value="in" style="display: none">
+                <input type="text" name="mail" placeholder="insira seu email" required>
+                <input type="password" name="pass" placeholder="insira sua senha" required>
                 <input type="submit" value="login">
             </form>
             <button onclick="pickSignup()" class="xtoy">> não tem uma conta?</button>
         </section>
         <section id="signupSect">
             <form action="../scripts/auth.php" method="post">
-                <input type="text" name="signupName" id="signupName" placeholder="insira um nome" required>
-                <input type="text" name="signupMail" id="signupMail" placeholder="insira um email" required>
-                <input type="password" name="signupPass" id="signupPass" placeholder="insira uma senha" required>
-                <input type="submit" value="login">
+                <input type="text" name="sign" value="up" style="display: none">
+                <input type="text" name="nome" placeholder="insira um nome" required>
+                <input type="text" name="mail" placeholder="insira um email" required>
+                <input type="password" name="pass" placeholder="insira uma senha" required>
+                <input type="submit" value="signin">
             </form>
             <button onclick="pickLogin()" class="xtoy">> já tem uma conta?</button>
         </section>

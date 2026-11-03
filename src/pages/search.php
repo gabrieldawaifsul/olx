@@ -1,4 +1,7 @@
-<?php require '../scripts/ribbons.php';?>
+<?php 
+@session_start();
+require '../scripts/ribbons.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

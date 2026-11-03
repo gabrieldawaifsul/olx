@@ -1,3 +1,7 @@
+<?php
+@session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +13,6 @@
 <body>
 
 <?php 
-
 #header
 require '../scripts/ribbons.php';
 head();
@@ -82,9 +85,7 @@ if (isset($_POST["mode"]) && $_POST["mode"] == 'edit'){
     <br>
     ITEM;
 
-    # AUTENTICAÇÂO DE USUÀRIO
-    # área de gerenciamento do item - WIP
-    $auth = true;
+    $auth = (@$item['uid'] == @$_SESSION['id']);
 
     if($auth){
     echo <<<OWNER

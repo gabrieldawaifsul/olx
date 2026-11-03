@@ -27,14 +27,9 @@ $CRUD_Q = array(
 
                     'R' => "SELECT * FROM users;",  
 
-                    'U' => "UPDATE users
-                            SET email = '$mail', 
-                                senha = '$pass', 
-                                nome = '$nome' 
-                            WHERE id = $id;",   
+                    'U' => "UPDATE users SET email = '$mail', senha = '$pass', nome = '$nome' WHERE id = $id;",   
 
-                    'D' => "DELETE FROM users 
-                            WHERE id = $id;"
+                    'D' => "DELETE FROM users WHERE id = $id;"
                 );
 
 if($CRUD == 'D'){
@@ -49,5 +44,8 @@ $result_temp = mysqli_query($db, $CRUD_Q[$CRUD]);
 #chama a função acima para Read por ID 
 if($CRUD == 'R')
     $result = query_result_getter($result_temp,'users');
+
+
+header("Location: re.php");
 
 ?>

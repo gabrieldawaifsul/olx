@@ -27,8 +27,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 }
 
 $CRUD_Q = array(  
-                    'C' => "INSERT INTO items(uid, preco, qtd, titulo, descr, cat) 
-                            VALUES('$uid', '$preco', '$qtd', '$titulo', '$descr', '$cat');",
+                    'C' => "INSERT INTO items(uid, preco, qtd, titulo, descr, cat) VALUES('$uid', '$preco', '$qtd', '$titulo', '$descr', '$cat');",
 
                     'R' => "SELECT * FROM items;",
 
@@ -47,4 +46,5 @@ $result_temp = mysqli_query($db, $CRUD_Q[$CRUD]);
 if($CRUD == 'R')
     $result = query_result_getter($result_temp,'items');
 
+@header("Location: re.php");
 ?>

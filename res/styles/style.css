@@ -12,8 +12,8 @@
     src: url('../fonts/MononokiNerdFont_Regular.ttf');
 }
 
-p, h1, h2, h3{
-    font-family: 'Mononoki';
+*, a, input, button{
+    font-family: 'Mononoki'!important;
     color:whitesmoke;
     text-shadow: 0.08em 0.08em black;
     overflow-wrap: break-word;
