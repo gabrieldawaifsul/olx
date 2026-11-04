@@ -1,9 +1,3 @@
-<?php
-@session_start();
-    if(!is_null(@$_SESSION['id']))
-        header("Location: search.php");
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +12,7 @@
     </section>
     <section id="right">
         <section id="pickerSect">
+            <input type="checkbox" id="toggle">
             <button id="loginPickerButton" onclick="pickLogin()">entrar na conta</button>
             <button id="signupPickerButton" onclick="pickSignup()">criar uma conta</button>
         </section>
@@ -42,6 +37,40 @@
         </section>
     </section>
 
-    <script src="../scripts/sign.js" async></script>
+    <script>
+const pickerTitle = document.getElementById("pickerTitle");
+
+const pickerSect = document.getElementById("pickerSect");
+const loginPickerButton = document.getElementById("loginPickerButton");
+const signupPickerButton = document.getElementById("signupPickerButton");
+
+const loginSect = document.getElementById("loginSect");
+
+const signupSect = document.getElementById("signupSect");
+
+function init(){
+    loginSect.style = "display: none;";
+    signupSect.style = "display: none;";
+    pickerSect.style = "display: flex;";
+}
+
+init();
+
+function pickLogin(){
+    pickerSect.style = "display: none;";
+    signupSect.style = "display: none;";
+
+    loginSect.style = "display: flex;";
+    pickerTitle.innerHTML = "entrar na sua conta";
+}
+
+function pickSignup(){
+    pickerSect.style = "display: none;";
+    loginSect.style = "display: none;";
+
+    signupSect.style = "display: flex;";
+    pickerTitle.innerHTML = "criar uma nova conta";
+}
+    </script>
 </body>
 </html>
