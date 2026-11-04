@@ -2,6 +2,8 @@
 #abre conexão
 require 'conn.php';
 
+@session_start();
+
 #handler da tipagem do request e incialização das variáveis dependente disto
 if($_SERVER['REQUEST_METHOD'] == 'GET'){
                 #se não tiver nada especificado, faz o R por padrão
@@ -45,6 +47,14 @@ $result_temp = mysqli_query($db, $CRUD_Q[$CRUD]);
 if($CRUD == 'R')
     $result = query_result_getter($result_temp,'users');
 
+if($CRUD == 'U'){
+    $_SESSION['id'] = $id;
+    $_SESSION['mail'] = $mail;
+    $_SESSION['nome'] = $nome;
+}
+
+if($CRUD == 'D')
+    session_destroy();
 
 header("Location: re.php");
 

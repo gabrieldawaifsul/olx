@@ -12,7 +12,6 @@
     </section>
     <section id="right">
         <section id="pickerSect">
-            <input type="checkbox" id="toggle">
             <button id="loginPickerButton" onclick="pickLogin()">entrar na conta</button>
             <button id="signupPickerButton" onclick="pickSignup()">criar uma conta</button>
         </section>

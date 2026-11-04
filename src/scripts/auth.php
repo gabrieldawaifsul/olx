@@ -13,8 +13,11 @@ if($sign_form == 'in'){
         $qr = mysqli_query($db, "SELECT * FROM users WHERE email = '$mail_form';");
         $qrg = query_result_getter($qr, 'users');
         if($qrg[0]['senha'] == $pass_form){
-            # define o ID da sessão
-            $_SESSION['id'] =  query_result_getter(mysqli_query($db,"SELECT * FROM users WHERE email = '$mail_form';"), 'users')[0]['id'];
+            # define a sessão
+            $user = query_result_getter(mysqli_query($db,"SELECT * FROM users WHERE email = '$mail_form';"), 'users')[0];
+            $_SESSION['id'] = $user['id'];  
+            $_SESSION['nome'] = $user['nome'];
+            $_SESSION['mail'] = $user['email'];
             header("Location: re.php");
         }else{
             echo 'senha errada';
