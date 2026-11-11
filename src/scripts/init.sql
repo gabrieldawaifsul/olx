@@ -33,69 +33,21 @@ CREATE TABLE IF NOT EXISTS mensagens(
 INSERT INTO users(email, senha, nome) VALUES
 ('asdf@mail.com','senha','ayin'),
 ('zxcv@mail.com','senha','hokma'),
-('qwerty@ml.com','senha','carmen'),
-('ghjkl@mal.com','senha','dante'),
-('tyui@mail.com','senha','lolang');
+('qwerty@ml.com','senha','carmen');
 
 INSERT INTO items(uid, preco, qtd, titulo, descr, cat) VALUES
-(1,100,500,'enke box','like pure energy','comida'),
-(1,250,1,'angela','like the doll form bloodborne','outro'),
-(3,0,1000,'free EGO','just dont distort lowkey','roupa'),
-(4,500,6,'golden bough','better than an enke box','comida'),
-(4,0,40,'sloshmael','please just take this off my hands','outro');
+(1,100,500,'enkefalina','energia extraída de seres humanos','comida'),
+(1,250,1,'angela','assistente robô','outro'),
+(3,0,1000,'E.G.O. grátis','sinal de força de vontade','roupa');
 
 INSERT INTO carrinhos VALUES
-(1,4),
-(3,5),
-(2,1),
-(2,4),
-(5,2);
+(1,1),
+(1,2),
+(1,3);
 
 INSERT INTO mensagens VALUES
-(3,1,'kill yourself'),
-(3,4,'i NEED clock dante'),
-(4,3,'tick tock tick tock'),
-(2,1,'i NEED clock ayin'),
-(5,4,'SEND THIS TO FIVE FELLOW MANAGERS FOR A FREE HAMHAMPANGPANG DEAL');
-
-
--- DQL
--- PROCEDIMENTOS. Queries em SQL que eu pretendo utilizar frequentemente no código. 
-/*
-    SELECT sender 
-    FROM mensagens
-    WHERE getter = id
-    UNION
-    SELECT getter 
-    FROM mensagens
-    WHERE sender = id;
-
-    SELECT sender, texto
-    FROM mensagens
-    WHERE sender = id1 AND getter = id2
-    UNION
-    SELECT sender, texto
-    FROM mensagens
-    WHERE sender = id2 AND getter = id2;
-
-  SELECT i.* 
-  FROM items AS i
-  JOIN carrinhos AS c 
-  ON c.iid = i.id
-  JOIN users AS u 
-  on c.uid = u.id
-  WHERE u.id = id;
-
-
-  SELECT i.* 
-  FROM items AS i
-  JOIN users AS u 
-  on i.uid = u.id
-  WHERE u.id = id;
-
-
-
-    DELETE FROM carrinhos WHERE iid = item;
-    DELETE FROM item WHERE id = item;
-*/
--- VIEWS. pseudotabelas em prol de facilitar acesso de dados
+(3,1,'its all your fault'),
+(1,3,'you literally did it to yourself'),
+(3,1,'what about your little robot assistant'),
+(2,1,'clocks are so interesting'),
+(2,1,'like, really, have you ever took any interest in watchmaking?');

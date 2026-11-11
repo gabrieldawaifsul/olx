@@ -43,7 +43,6 @@ $item['uid'] = query_result_getter(
 
 #decide se o item vai ser só visível ou editável
 if (isset($_POST["mode"]) && $_POST["mode"] == 'edit'){
-    #safeguard on nosy by auth
     echo <<<EDIT
         <div class="box" style="flex-flow: column; width: 50%;">
             <h1>edite essa<br>sua listagem</h1>
@@ -70,7 +69,7 @@ if (isset($_POST["mode"]) && $_POST["mode"] == 'edit'){
 
 }else{
     #imprime as variáveis bonitinhas
-    echo <<<ITEM
+    echo <<<ITEMA
     <div id="main" class="box">
             <div style="flex-direction: row;">
                 <div style="flex-direction:row">
@@ -82,7 +81,36 @@ if (isset($_POST["mode"]) && $_POST["mode"] == 'edit'){
                     <div style="flex-direction: column; align-items: end;">
                         <h1>R\${$item['preco']}</h1>
                         <h3>{$item['qtd']} disponível(is)</h3>
-                        <button onclick="#">carrinho</button>
+    ITEMA;
+
+    try{
+        $uid = $_SESSION["id"];
+        
+        $res = query_result_getter(
+            mysqli_query($db,
+                "SELECT * FROM carrinhos WHERE uid = $uid AND iid = $id;"
+            ),'carrinhos'
+        );
+        
+        if($res != null) throw new Exception('whelp');
+
+        echo <<<CART
+            <form action="../scripts/cartCRUD.php" method="post">
+                <input style="display: none" type="text" name="iid" value=$id>
+                <input style="display: none" type="text" name="uid" value={$uid}>
+                <input style="display: none" type="text" name="CRUD" value='C'>
+                <input type="submit" value="adicionar ao carrinho">
+            </form>
+        CART;
+
+    }catch(Exception $e){
+        echo 'já está no seu carrinho!';
+
+    }
+
+
+
+    echo <<<ITEMB
                     </div>
                 </div>
             </div>
@@ -90,7 +118,7 @@ if (isset($_POST["mode"]) && $_POST["mode"] == 'edit'){
     </div>
     <br>
     <br>
-    ITEM;
+    ITEMB;
 
     $auth = (@$iuid == @$_SESSION['id']);
 

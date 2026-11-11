@@ -88,3 +88,19 @@ input[type=submit]:hover{
     color: whitesmoke !important;
     text-shadow: none !important;
 }
+
+.cartcard{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: 50%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 1.5em;
+}
+
+.cartcard li{
+    display: flex;
+    overflow-x: scroll;
+}

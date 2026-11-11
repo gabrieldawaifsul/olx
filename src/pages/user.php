@@ -4,6 +4,7 @@
         header("Location: search.php");
 
 require '../scripts/ribbons.php';
+require '../scripts/conn.php';
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +18,7 @@ require '../scripts/ribbons.php';
 <body>
 <?php
 head();
+foot();
 ?>
 <section id="left">
 <?php
@@ -48,18 +50,33 @@ echo <<<EDIT
     </form>
 EDIT;
 }
+echo '</section>
+    <section id="right">
+    <h2>seu carrinho</h2>';
+
+try{
+    $result = query_result_getter(
+        mysqli_query($db,
+            "SELECT * FROM items WHERE id IN (SELECT iid FROM carrinhos WHERE uid = $id);"
+        ),'items'
+    ); 
+
+    if($result == null) throw new Exception('404');
+
+    foreach($result as $row){
+        echo <<<CARTCARD
+            <ul class="cartcard">
+                <li><a href="item.php?{$row['id']}">{$row['titulo']}</a></li>
+                <li>R\${$row['preco']}</li>
+                <li><a href="../scripts/cartCRUD.php?{$row['id']}">X</a></li>
+            </ul>
+        CARTCARD;
+    }
+
+}catch(Exception $e){
+    echo '<h4>você não tem nada no seu carrinho</h4>';
+    echo '<a href="search.php">>adicione alguma coisa</a>';
+}
+
+echo '</section></body></html>';
 ?>
-
-
-</section>
-<section id="right">
-        <p>aqui é onde eu colocaria tipo</p>
-        <p>'suas listagems'</p>
-        <p>ou alguma outra coisa do gênero</p>
-</section>
-
-<?php
-foot();
-?>
-</body>
-</html>
