@@ -60,7 +60,9 @@ if($with != (0 || null)){
 
     if($result == null) throw new Exception('404');
 
-    foreach($result as $msg){
+    $res = array_reverse($result);
+
+    foreach($res as $msg){
         $a = ($msg["sender"] == $_SESSION["id"])? 'msgR': 'msgL';
         $b = $msg["texto"]; 
         

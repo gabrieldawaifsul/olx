@@ -22,6 +22,8 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
     echo "Tipo de request incorreto?";
 }
 
+if($id == null) $id = $_SESSION["id"];
+
 #array associativa guardando as queries
 $CRUD_Q = array(
                     'C' => "INSERT INTO users(email, senha, nome) 
@@ -35,9 +37,10 @@ $CRUD_Q = array(
                 );
 
 if($CRUD == 'D'){
+    mysqli_query($db, "DELETE FROM items WHERE uid = $id;");
     mysqli_query($db, "DELETE FROM carrinhos WHERE uid = $id;");
-    mysqli_query($db, "DELETE FROM mensagems WHERE sender = $id;");
-    mysqli_query($db, "DELETE FROM mensagems WHERE getter = $id;");
+    mysqli_query($db, "DELETE FROM mensagens WHERE sender = $id;");
+    mysqli_query($db, "DELETE FROM mensagens WHERE getter = $id;");
 }
 
 #executa a query e prende o resultado na array $r

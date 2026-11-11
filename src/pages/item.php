@@ -49,7 +49,7 @@ if (isset($_POST["mode"]) && $_POST["mode"] == 'edit'){
         <form action="../scripts/itemCRUD.php" method="post">
             <input style="display: none;" type="text" name="CRUD" value='U'>
             <input style="display: none;" type="text" name="id" value='{$id}'>
-            <input style="display: none;" type="text" name="uid" value='{$item['uid']}'>
+            <input style="display: none;" type="text" name="uid" value='{$iuid}'>
             <input required maxlength=64 type="text" name="titulo" value="{$item['titulo']}">
             <input required maxlength=1024 type="text" name="descr" value="{$item['descr']}">
             <input required min=0 type="number" name="preco" value="{$item['preco']}">
@@ -84,6 +84,8 @@ if (isset($_POST["mode"]) && $_POST["mode"] == 'edit'){
     ITEMA;
 
     try{
+        if($_SESSION == null) throw new Exception('realize login para comprar');
+
         $uid = $_SESSION["id"];
         
         $res = query_result_getter(
@@ -92,7 +94,8 @@ if (isset($_POST["mode"]) && $_POST["mode"] == 'edit'){
             ),'carrinhos'
         );
         
-        if($res != null) throw new Exception('whelp');
+
+        if($res != null) throw new Exception('já está no seu carrinho!');
 
         echo <<<CART
             <form action="../scripts/cartCRUD.php" method="post">
@@ -104,7 +107,7 @@ if (isset($_POST["mode"]) && $_POST["mode"] == 'edit'){
         CART;
 
     }catch(Exception $e){
-        echo 'já está no seu carrinho!';
+        echo $e->getMessage();
 
     }
 

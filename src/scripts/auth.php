@@ -44,6 +44,8 @@ if($sign_form == 'in'){
         #bloco de criar conta nova 
         mysqli_query($db,"INSERT INTO users(email, senha, nome) VALUES('$mail_form','$pass_form','$nome_form');");
 
+            require 're.php';
+
     }catch(mysqli_sql_exception){
         echo 'erro de banco de dados';
     }catch(Exception $e){

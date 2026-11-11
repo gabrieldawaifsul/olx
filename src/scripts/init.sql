@@ -36,9 +36,9 @@ INSERT INTO users(email, senha, nome) VALUES
 ('qwerty@ml.com','senha','carmen');
 
 INSERT INTO items(uid, preco, qtd, titulo, descr, cat) VALUES
-(1,100,500,'enkefalina','energia extraída de seres humanos','comida'),
-(1,250,1,'angela','assistente robô','outro'),
-(3,0,1000,'E.G.O. grátis','sinal de força de vontade','roupa');
+(1,100,500,'enkefalina','energia extraida de seres humanos','comida'),
+(1,250,1,'angela','assistente robo','outro'),
+(3,0,1000,'E.G.O. gratis','sinal de força de vontade','roupa');
 
 INSERT INTO carrinhos VALUES
 (1,1),
