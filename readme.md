@@ -8,8 +8,8 @@
 | readme.md - explicação das coisas
 
 ## Estrutura do Banco de Dados
-Users(**<u>id</u>**, mail, senha, nome, foto)\
-Itens(**<u>id</u>**, <u>uid</u>, preco, qtd, nome, desc, fotos, categoria)\
+Users(**<u>id</u>**, mail, senha, nome)\
+Itens(**<u>id</u>**, <u>uid</u>, preco, qtd, nome, desc, categoria)\
 Mensagens(<u>uid1</u>,<u>uid2</u>, texto)\
 Carrinhos(<u>uid</u>,<u>iid</u>)
 
