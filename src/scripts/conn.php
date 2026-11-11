@@ -38,6 +38,12 @@ function fata($fa, $t){
                         'iid' => $fa["iid"]
                         );
             break;
+        case 'msgGrps':
+            return array(
+                        'nm' => $fa["nm"],
+                        'id' => $fa["id"]
+                        );
+            break;
         default:
             echo 'FATA ERROR: essa tabela não existe';
             break;

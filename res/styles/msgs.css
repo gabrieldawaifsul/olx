@@ -1,0 +1,66 @@
+@import url(search.css);
+
+.card{
+    width: 50vw;
+    height: 5vh;
+    padding: 0;
+    justify-content: center;
+    border: none;
+}
+
+.card input[type=submit]{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#msgvw{
+    width: 50vw;
+    height: 50vh;
+    display: flex;
+    flex-flow: column;
+}
+
+.msgL{
+    align-self: flex-start;
+
+    background-color: whitesmoke;
+    color: var(--back);
+    text-shadow: none;
+    box-shadow: var(--back) 3px 3px;
+
+    padding: 3px 10px;
+}
+
+.msgR{
+    align-self: flex-end;
+
+    background-color: var(--back);
+    color: whitesmoke;
+    text-shadow: none;
+    box-shadow: whitesmoke 3px 3px;
+
+    padding: 3px 10px;
+}
+
+#msgbox{
+    display: flex;
+    flex-flow: row;
+}
+
+#msgbox input[type=text]{
+    flex-grow: 9;
+}
+#msgbox input[type=submit]{
+    flex-grow: 1;
+    background-color: var(--back);
+}
+
+hr{
+    width: 100% + 2em;
+    margin: 1em -1em;
+    z-index: 2;
+
+    border: solid whitesmoke 2.5px;     
+    box-shadow: var(--back) 0px 5px;
+}

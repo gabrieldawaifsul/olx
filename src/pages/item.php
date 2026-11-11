@@ -34,6 +34,13 @@ $item = fata(
             'items'
             );
 
+$iuid = $item['uid']; 
+$item['uid'] = query_result_getter(
+                mysqli_query($db,
+                    "SELECT * FROM users WHERE id = '$iuid';"
+                ),'users'
+              )[0]["nome"];
+
 #decide se o item vai ser só visível ou editável
 if (isset($_POST["mode"]) && $_POST["mode"] == 'edit'){
     #safeguard on nosy by auth
@@ -75,7 +82,7 @@ if (isset($_POST["mode"]) && $_POST["mode"] == 'edit'){
                     <div style="flex-direction: column; align-items: end;">
                         <h1>R\${$item['preco']}</h1>
                         <h3>{$item['qtd']} disponível(is)</h3>
-                        <button onclick="#">comprar</button>
+                        <button onclick="#">carrinho</button>
                     </div>
                 </div>
             </div>
@@ -85,7 +92,7 @@ if (isset($_POST["mode"]) && $_POST["mode"] == 'edit'){
     <br>
     ITEM;
 
-    $auth = (@$item['uid'] == @$_SESSION['id']);
+    $auth = (@$iuid == @$_SESSION['id']);
 
     if($auth){
     echo <<<OWNER

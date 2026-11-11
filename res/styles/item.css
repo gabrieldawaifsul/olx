@@ -15,12 +15,13 @@
     width:50vw;
     border-color: var(--redd);
     background-color: brown;
+    flex-flow: row wrap;
 }
 
 #admin button{
     background-color: var(--redd);
     color: whitesmoke;
-    width: 45%;
+    flex-grow: 2;
 }
 
 #admin button:hover{

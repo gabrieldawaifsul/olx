@@ -20,7 +20,7 @@ if($sign_form == 'in'){
             $_SESSION['mail'] = $user['email'];
             header("Location: re.php");
         }else{
-            echo 'senha errada';
+            require 're.php';
         }
     }catch(mysqli_sql_exception){
         echo 'erro de banco de dados';

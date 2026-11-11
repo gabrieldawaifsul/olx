@@ -27,7 +27,7 @@ function foot()
     
 echo <<<FOOTER
     <footer>
-        <p>Gabriel Uczak Dawa 4I — trabalho final de linguagem de programação II - <a href="about.php">sobre o projeto</a></p>
+        <p style="max-width: 100%">Gabriel Uczak Dawa 4I — trabalho final de linguagem de programação II - <a href="about.php">sobre o projeto</a></p>
     </footer>
 FOOTER;
 

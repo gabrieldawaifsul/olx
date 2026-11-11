@@ -102,5 +102,5 @@ button{
 .box{
     border: solid whitesmoke 5px; 
     padding: 1em; 
-    box-shadow: 5px 5px;
+    box-shadow: var(--back) 5px 5px;
 }

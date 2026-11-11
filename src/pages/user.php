@@ -19,10 +19,14 @@ require '../scripts/ribbons.php';
 head();
 ?>
 <section id="left">
-    <h1>olá, <span>nome</span></h1>
 <?php
+    $id = $_SESSION["id"];
+    $mail = $_SESSION["mail"];
+    $nome = $_SESSION["nome"];
+
 if($_SERVER["QUERY_STRING"] != 'edit=true'){
 echo <<<PROMPT
+    <h1>olá, <span>$nome</span></h1>
     <form action="user.php" type="get">
         <input type="text" name="edit" value="true" style="display: none;">
         <input type="submit" value="editar conta">
@@ -33,14 +37,11 @@ echo <<<PROMPT
     </form>
 PROMPT;
 }else{
-    $id = $_SESSION["id"];
-    $mail = $_SESSION["mail"];
-    $nome = $_SESSION["nome"];
 echo <<<EDIT
     <form action="../scripts/userCRUD.php" method="post">
         <input type="text" name="CRUD" value="U" style="display: none;">
         <input type="text" name="id" value="$id" style="display: none;">
-        <input type="text" name="mail" value="$nome">
+        <input type="text" name="nome" value="$nome">
         <input type="text" name="mail" value="$mail">
         <input type="password" name="pass">
         <input type="submit" value="editar">
